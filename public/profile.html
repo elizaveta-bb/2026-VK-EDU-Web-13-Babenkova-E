@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Настройки профиля — AskBabenkova</title>
+    <link rel="icon" type="image/svg+xml" href="static/img/favicon.svg">
+    <link rel="stylesheet" href="static/css/bootstrap.min.css">
+    <link rel="stylesheet" href="static/css/style.css">
+</head>
+<body>
+    <header class="header">
+        <a href="index.html" class="logo">AskBabenkova</a>
+
+        <form role="search">
+            <input type="search" placeholder="Поиск вопросов" aria-label="Поиск вопросов">
+            <button type="submit">Найти</button>
+        </form>
+
+        <a href="ask.html">Задать вопрос</a>
+
+        <nav aria-label="Аккаунт" class="align-items-center">
+            <img
+                src="static/img/avatar.svg"
+                alt="Моя аватарка"
+                width="40"
+                height="40"
+                class="rounded"
+            >
+            <div>
+                <strong class="d-block">Елизавета</strong>
+                <a href="profile.html" aria-current="page">Настройки</a>
+                <a href="index.html" class="ms-2">Выйти</a>
+            </div>
+        </nav>
+    </header>
+
+    <div class="layout">
+        <main>
+            <h1 class="questions-title">Настройки профиля</h1>
+            <p class="text-secondary mb-4">
+                Здесь можно изменить данные и аватарку.
+            </p>
+        
+            <div class="alert alert-danger" role="alert">
+                Не удалось сохранить изменения. Проверь email.
+            </div>
+        
+            <form style="max-width: 560px;">
+                <div class="mb-4">
+                    <label for="profile-login" class="form-label">Логин</label>
+                    <input
+                        type="text"
+                        id="profile-login"
+                        class="form-control"
+                        value="elizaveta"
+                        minlength="3"
+                        maxlength="30"
+                        autocomplete="username"
+                        required
+                        aria-describedby="profile-login-hint"
+                    >
+                    <div id="profile-login-hint" class="form-text">
+                        От 3 до 30 символов.
+                    </div>
+                </div>
+        
+                <div class="mb-4">
+                    <label for="profile-email" class="form-label">Email</label>
+                    <input
+                        type="email"
+                        id="profile-email"
+                        class="form-control is-invalid"
+                        value="elizaveta@"
+                        maxlength="254"
+                        autocomplete="email"
+                        required
+                        aria-invalid="true"
+                        aria-describedby="profile-email-error profile-email-hint"
+                    >
+                    <div id="profile-email-error" class="invalid-feedback">
+                        Укажи полный адрес, например elizaveta@example.com.
+                    </div>
+                    <div id="profile-email-hint" class="form-text">
+                        Этот адрес используется для входа в аккаунт.
+                    </div>
+                </div>
+        
+                <div class="mb-4">
+                    <label for="profile-name" class="form-label">
+                        Отображаемое имя
+                    </label>
+                    <input
+                        type="text"
+                        id="profile-name"
+                        class="form-control"
+                        value="Елизавета"
+                        maxlength="50"
+                        autocomplete="nickname"
+                        required
+                        aria-describedby="profile-name-hint"
+                    >
+                    <div id="profile-name-hint" class="form-text">
+                        До 50 символов. Имя видно рядом с вопросами и ответами.
+                    </div>
+                </div>
+        
+                <div class="mb-4">
+                    <label for="profile-avatar" class="form-label">
+                        Аватарка
+                    </label>
+        
+                    <img
+                        src="static/img/avatar.svg"
+                        alt="Текущая аватарка"
+                        width="96"
+                        height="96"
+                        class="d-block rounded mb-3"
+                    >
+        
+                    <input
+                        type="file"
+                        id="profile-avatar"
+                        class="form-control"
+                        accept="image/png,image/jpeg"
+                        aria-describedby="profile-avatar-hint"
+                    >
+                    <div id="profile-avatar-hint" class="form-text">
+                        Выбери PNG или JPEG. Оставь поле пустым,
+                        чтобы сохранить текущую аватарку.
+                    </div>
+                </div>
+        
+                <button type="button" class="btn btn-primary">
+                    Сохранить изменения
+                </button>
+            </form>
+        </main>
+
+        <aside>
+            <h2>Популярные теги</h2>
+            <p>Python · Django · HTML · CSS</p>
+
+            <h2>Лучшие участники</h2>
+            <ul>
+                <li>Елизавета</li>
+                <li>Александр</li>
+                <li>Анна</li>
+            </ul>
+        </aside>
+    </div>
+
+    <footer class="footer">
+        Учебный проект AskBabenkova · 2026
+    </footer>
+</body>
+</html>

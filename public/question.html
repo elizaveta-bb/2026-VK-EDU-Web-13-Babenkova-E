@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Как подключить Bootstrap — AskBabenkova</title>
+    <link rel="icon" type="image/svg+xml" href="static/img/favicon.svg">
+    <link rel="stylesheet" href="static/css/bootstrap.min.css">
+    <link rel="stylesheet" href="static/css/style.css">
+</head>
+<body>
+    <header class="header">
+        <a href="index.html" class="logo">AskBabenkova</a>
+
+        <form role="search">
+            <input type="search" placeholder="Поиск вопросов" aria-label="Поиск вопросов">
+            <button type="submit">Найти</button>
+        </form>
+
+        <a href="ask.html">Задать вопрос</a>
+
+        <nav aria-label="Аккаунт">
+            <a href="login.html">Войти</a>
+            <a href="signup.html">Регистрация</a>
+        </nav>
+    </header>
+
+    <div class="layout">
+        <main>
+            <!-- Сам вопрос -->
+            <article class="question-card">
+                <div class="question-author">
+                    <img
+                        src="static/img/avatar.svg"
+                        alt="Аватар Елизаветы"
+                        class="avatar"
+                        width="64"
+                        height="64"
+                    >
+        
+                    <div class="vote-widget" role="group" aria-label="Оценка вопроса">
+                        <button
+                            type="button"
+                            class="vote-button is-liked"
+                            aria-label="Нравится"
+                            aria-pressed="true"
+                        >▲</button>
+        
+                        <span class="vote-count">12</span>
+        
+                        <button
+                            type="button"
+                            class="vote-button"
+                            aria-label="Не нравится"
+                            aria-pressed="false"
+                        >▼</button>
+                    </div>
+                </div>
+        
+                <div class="question-content">
+                    <h1 class="fs-4 mb-3">
+                        Как подключить Bootstrap к HTML-странице?
+                    </h1>
+        
+                    <p>
+                        Делаю свой первый сайт вопросов и ответов.
+                        По заданию все стили должны храниться локально.
+                    </p>
+        
+                    <p>
+                        Я скачала Bootstrap и создала свой файл style.css.
+                        В каком порядке их подключать, чтобы мои стили
+                        могли изменять оформление Bootstrap?
+                    </p>
+        
+                    <div class="question-meta">
+                        <span>Елизавета</span>
+                        <time datetime="2026-10-18T10:30:00+03:00">
+                            18 октября 2026, 10:30
+                        </time>
+                        <span>3 ответа</span>
+                    </div>
+        
+                    <div class="question-tags">
+                        <span>Теги:</span>
+                        <a href="tag.html?tag=html" class="tag">html</a>
+                        <a href="tag.html?tag=bootstrap" class="tag">bootstrap</a>
+                    </div>
+                </div>
+            </article>
+        
+            <section aria-labelledby="answers-heading">
+                <h2 id="answers-heading" class="fs-4 mt-4 mb-3">
+                    Ответы
+                </h2>
+                <p class="text-secondary">Показаны 2 из 3 ответов.</p>
+        
+                <!-- Правильный ответ -->
+                <article class="question-card border-success">
+                    <div class="question-author">
+                        <img
+                            src="static/img/avatar.svg"
+                            alt="Аватар Александра"
+                            class="avatar"
+                            width="64"
+                            height="64"
+                        >
+        
+                        <div class="vote-widget" role="group" aria-label="Оценка ответа Александра">
+                            <button
+                                type="button"
+                                class="vote-button is-liked"
+                                aria-label="Нравится"
+                                aria-pressed="true"
+                            >▲</button>
+        
+                            <span class="vote-count">8</span>
+        
+                            <button
+                                type="button"
+                                class="vote-button"
+                                aria-label="Не нравится"
+                                aria-pressed="false"
+                            >▼</button>
+                        </div>
+                    </div>
+        
+                    <div class="question-content">
+                        <h3 class="fs-6">Александр</h3>
+        
+                        <p>
+                            Сначала подключи bootstrap.min.css,
+                            а следующей строкой — свой style.css.
+                            При одинаковой специфичности селекторов
+                            более позднее правило получает приоритет,
+                            если остальные условия каскада совпадают.
+                        </p>
+        
+                        <p>
+                            Оба файла подключаются через тег
+                            <code>&lt;link&gt;</code> внутри
+                            <code>&lt;head&gt;</code>.
+                        </p>
+        
+                        <div class="question-meta">
+                            <time datetime="2026-10-18T11:00:00+03:00">
+                                18 октября 2026, 11:00
+                            </time>
+                        </div>
+        
+                        <div class="form-check">
+                            <input
+                                type="checkbox"
+                                id="correct-answer-1"
+                                class="form-check-input"
+                                checked
+                            >
+                            <label for="correct-answer-1" class="form-check-label text-success">
+                                Правильный ответ
+                            </label>
+                        </div>
+                    </div>
+                </article>
+        
+                <!-- Обычный ответ -->
+                <article class="question-card">
+                    <div class="question-author">
+                        <img
+                            src="static/img/avatar.svg"
+                            alt="Аватар Анны"
+                            class="avatar"
+                            width="64"
+                            height="64"
+                        >
+        
+                        <div class="vote-widget" role="group" aria-label="Оценка ответа Анны">
+                            <button
+                                type="button"
+                                class="vote-button"
+                                aria-label="Нравится"
+                                aria-pressed="false"
+                            >▲</button>
+        
+                            <span class="vote-count">3</span>
+        
+                            <button
+                                type="button"
+                                class="vote-button"
+                                aria-label="Не нравится"
+                                aria-pressed="false"
+                            >▼</button>
+                        </div>
+                    </div>
+        
+                    <div class="question-content">
+                        <h3 class="fs-6">Анна</h3>
+        
+                        <p>
+                            Ещё проверь пути к файлам. Если HTML лежит
+                            в public, а стили — в public/static/css,
+                            путь в HTML будет начинаться с static/css/.
+                        </p>
+        
+                        <p>
+                            Если оформление не изменилось, сохрани CSS
+                            и обнови страницу в браузере.
+                        </p>
+        
+                        <div class="question-meta">
+                            <time datetime="2026-10-18T11:20:00+03:00">
+                                18 октября 2026, 11:20
+                            </time>
+                        </div>
+        
+                        <div class="form-check">
+                            <input
+                                type="checkbox"
+                                id="correct-answer-2"
+                                class="form-check-input"
+                            >
+                            <label for="correct-answer-2" class="form-check-label">
+                                Правильный ответ
+                            </label>
+                        </div>
+                    </div>
+                </article>
+        
+                <nav aria-label="Страницы ответов" class="my-4">
+                    <ul class="pagination flex-wrap gap-1">
+                        <li class="page-item active">
+                            <a
+                                href="question.html?page=1"
+                                class="page-link"
+                                aria-current="page"
+                            >1</a>
+                        </li>
+                        <li class="page-item">
+                            <a href="question.html?page=2" class="page-link">2</a>
+                        </li>
+                    </ul>
+                </nav>
+            </section>
+        
+            <section aria-labelledby="answer-form-heading" class="border-top pt-4">
+                <h2 id="answer-form-heading" class="fs-4 mb-3">
+                    Твой ответ
+                </h2>
+        
+                <form>
+                    <div class="mb-3">
+                        <label for="answer-text" class="form-label">
+                            Текст ответа
+                        </label>
+        
+                        <textarea
+                            id="answer-text"
+                            class="form-control"
+                            rows="5"
+                            minlength="20"
+                            maxlength="5000"
+                            required
+                            aria-describedby="answer-hint"
+                            placeholder="Предложи решение и объясни, почему оно работает"
+                        ></textarea>
+        
+                        <div id="answer-hint" class="form-text">
+                            От 20 до 5000 символов.
+                        </div>
+                    </div>
+        
+                    <button type="button" class="btn btn-success">
+                        Отправить ответ
+                    </button>
+                </form>
+            </section>
+        </main>
+
+        <aside>
+            <h2>Популярные теги</h2>
+            <p>Python · Django · HTML · CSS</p>
+
+            <h2>Лучшие участники</h2>
+            <ul>
+                <li>Елизавета</li>
+                <li>Александр</li>
+                <li>Анна</li>
+            </ul>
+        </aside>
+    </div>
+
+    <footer class="footer">
+        Учебный проект AskBabenkova · 2026
+    </footer>
+</body>
+</html>

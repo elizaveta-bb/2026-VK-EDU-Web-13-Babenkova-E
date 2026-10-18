@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Вход — AskBabenkova</title>
+    <link rel="icon" type="image/svg+xml" href="static/img/favicon.svg">
+    <link rel="stylesheet" href="static/css/bootstrap.min.css">
+    <link rel="stylesheet" href="static/css/style.css">
+</head>
+<body>
+    <header class="header">
+        <a href="index.html" class="logo">AskBabenkova</a>
+
+        <form role="search">
+            <input type="search" placeholder="Поиск вопросов" aria-label="Поиск вопросов">
+            <button type="submit">Найти</button>
+        </form>
+
+        <a href="ask.html">Задать вопрос</a>
+
+        <nav aria-label="Аккаунт">
+            <a href="login.html">Войти</a>
+            <a href="signup.html">Регистрация</a>
+        </nav>
+    </header>
+
+    <div class="layout">
+        <main>
+            <h1 class="questions-title">Вход</h1>
+            <p class="text-secondary mb-4">
+                Войди в аккаунт, чтобы задавать вопросы и отвечать.
+            </p>
+        
+            <div class="alert alert-danger" role="alert">
+                Неверный email или пароль. Проверь введённые данные.
+            </div>
+        
+            <form style="max-width: 480px;">
+                <div class="mb-4">
+                    <label for="login-email" class="form-label">
+                        Email
+                    </label>
+        
+                    <input
+                        type="email"
+                        id="login-email"
+                        class="form-control"
+                        placeholder="name@example.com"
+                        maxlength="254"
+                        autocomplete="username"
+                        required
+                        aria-describedby="email-hint"
+                    >
+        
+                    <div id="email-hint" class="form-text">
+                        Укажи email, который использовала при регистрации.
+                    </div>
+                </div>
+        
+                <div class="mb-4">
+                    <label for="login-password" class="form-label">
+                        Пароль
+                    </label>
+        
+                    <input
+                        type="password"
+                        id="login-password"
+                        class="form-control"
+                        maxlength="128"
+                        autocomplete="current-password"
+                        required
+                        aria-describedby="password-hint"
+                    >
+        
+                    <div id="password-hint" class="form-text">
+                        Пароль чувствителен к регистру букв.
+                    </div>
+                </div>
+        
+                <button type="button" class="btn btn-primary">
+                    Войти
+                </button>
+        
+                <p class="mt-4">
+                    Ещё нет аккаунта?
+                    <a href="signup.html">Зарегистрироваться</a>
+                </p>
+            </form>
+        </main>
+
+        <aside>
+            <h2>Популярные теги</h2>
+            <p>Python · Django · HTML · CSS</p>
+
+            <h2>Лучшие участники</h2>
+            <ul>
+                <li>Елизавета</li>
+                <li>Александр</li>
+                <li>Анна</li>
+            </ul>
+        </aside>
+    </div>
+
+    <footer class="footer">
+        Учебный проект AskBabenkova · 2026
+    </footer>
+</body>
+</html>

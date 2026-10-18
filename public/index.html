@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Новые вопросы — AskBabenkova</title>
+    <link rel="icon" type="image/svg+xml" href="static/img/favicon.svg">
+    <link rel="stylesheet" href="static/css/bootstrap.min.css">
+    <link rel="stylesheet" href="static/css/style.css">
+</head>
+<body>
+    <header class="header">
+        <a href="index.html" class="logo">AskBabenkova</a>
+
+        <form role="search">
+            <input type="search" placeholder="Поиск вопросов" aria-label="Поиск вопросов">
+            <button type="submit">Найти</button>
+        </form>
+
+        <a href="ask.html">Задать вопрос</a>
+
+        <nav aria-label="Аккаунт">
+            <a href="login.html">Войти</a>
+            <a href="signup.html">Регистрация</a>
+        </nav>
+    </header>
+
+    <div class="layout">
+        <main>
+            <h1 class="questions-title">Новые вопросы</h1>
+            <p class="text-secondary mb-4">
+                Задавай вопросы и делись знаниями
+            </p>
+        
+            <!-- Вопрос с выбранным лайком -->
+            <article class="question-card">
+                <div class="question-author">
+                    <img
+                        src="static/img/avatar.svg"
+                        alt="Аватар Елизаветы"
+                        class="avatar"
+                        width="64"
+                        height="64"
+                    >
+        
+                    <div class="vote-widget" role="group" aria-label="Оценка вопроса">
+                        <button
+                            type="button"
+                            class="vote-button is-liked"
+                            aria-label="Нравится"
+                            aria-pressed="true"
+                        >▲</button>
+        
+                        <span class="vote-count">12</span>
+        
+                        <button
+                            type="button"
+                            class="vote-button"
+                            aria-label="Не нравится"
+                            aria-pressed="false"
+                        >▼</button>
+                    </div>
+                </div>
+        
+                <div class="question-content">
+                    <h2>
+                        <a href="question.html">
+                            Как подключить Bootstrap к HTML-странице?
+                        </a>
+                    </h2>
+        
+                    <p>
+                        Делаю свой первый сайт. Хочу хранить стили локально,
+                        но не понимаю, в каком порядке подключать Bootstrap
+                        и собственный CSS.
+                    </p>
+        
+                    <div class="question-meta">
+                        <span>Елизавета</span>
+                        <time datetime="2026-10-18T10:30:00+03:00">
+                            18 октября 2026, 10:30
+                        </time>
+                    </div>
+        
+                    <div class="question-bottom">
+                        <a href="question.html">3 ответа</a>
+        
+                        <div class="question-tags">
+                            <span>Теги:</span>
+                            <a href="tag.html?tag=html" class="tag">html</a>
+                            <a href="tag.html?tag=bootstrap" class="tag">bootstrap</a>
+                        </div>
+                    </div>
+                </div>
+            </article>
+        
+            <!-- Вопрос без выбранной оценки -->
+            <article class="question-card">
+                <div class="question-author">
+                    <img
+                        src="static/img/avatar.svg"
+                        alt="Аватар Александра"
+                        class="avatar"
+                        width="64"
+                        height="64"
+                    >
+        
+                    <div class="vote-widget" role="group" aria-label="Оценка вопроса">
+                        <button
+                            type="button"
+                            class="vote-button"
+                            aria-label="Нравится"
+                            aria-pressed="false"
+                        >▲</button>
+        
+                        <span class="vote-count">5</span>
+        
+                        <button
+                            type="button"
+                            class="vote-button"
+                            aria-label="Не нравится"
+                            aria-pressed="false"
+                        >▼</button>
+                    </div>
+                </div>
+        
+                <div class="question-content">
+                    <h2>
+                        <a href="question.html">
+                            Как прижать подвал к низу страницы?
+                        </a>
+                    </h2>
+        
+                    <p>
+                        Когда текста мало, подвал оказывается посередине экрана.
+                        Как сделать так, чтобы он оставался внизу,
+                        а на длинной странице шёл после контента?
+                    </p>
+        
+                    <div class="question-meta">
+                        <span>Александр</span>
+                        <time datetime="2026-10-18T09:15:00+03:00">
+                            18 октября 2026, 09:15
+                        </time>
+                    </div>
+        
+                    <div class="question-bottom">
+                        <a href="question.html">2 ответа</a>
+        
+                        <div class="question-tags">
+                            <span>Теги:</span>
+                            <a href="tag.html?tag=css" class="tag">css</a>
+                            <a href="tag.html?tag=flexbox" class="tag">flexbox</a>
+                        </div>
+                    </div>
+                </div>
+            </article>
+        
+            <!-- Вопрос с выбранным дизлайком -->
+            <article class="question-card">
+                <div class="question-author">
+                    <img
+                        src="static/img/avatar.svg"
+                        alt="Аватар Анны"
+                        class="avatar"
+                        width="64"
+                        height="64"
+                    >
+        
+                    <div class="vote-widget" role="group" aria-label="Оценка вопроса">
+                        <button
+                            type="button"
+                            class="vote-button"
+                            aria-label="Нравится"
+                            aria-pressed="false"
+                        >▲</button>
+        
+                        <span class="vote-count">−1</span>
+        
+                        <button
+                            type="button"
+                            class="vote-button is-disliked"
+                            aria-label="Не нравится"
+                            aria-pressed="true"
+                        >▼</button>
+                    </div>
+                </div>
+        
+                <div class="question-content">
+                    <h2>
+                        <a href="question.html">
+                            С чего начать изучение Django?
+                        </a>
+                    </h2>
+        
+                    <p>
+                        Уже немного знакома с Python и HTML.
+                        Хочу разобраться, как связать страницы сайта
+                        с обработчиками запросов.
+                    </p>
+        
+                    <div class="question-meta">
+                        <span>Анна</span>
+                        <time datetime="2026-10-17T18:40:00+03:00">
+                            17 октября 2026, 18:40
+                        </time>
+                    </div>
+        
+                    <div class="question-bottom">
+                        <a href="question.html">7 ответов</a>
+        
+                        <div class="question-tags">
+                            <span>Теги:</span>
+                            <a href="tag.html?tag=python" class="tag">python</a>
+                            <a href="tag.html?tag=django" class="tag">django</a>
+                        </div>
+                    </div>
+                </div>
+            </article>
+        
+            <nav aria-label="Страницы вопросов" class="mt-4">
+                <ul class="pagination flex-wrap gap-1">
+                    <li class="page-item active">
+                        <a class="page-link" href="index.html?page=1" aria-current="page">1</a>
+                    </li>
+                    <li class="page-item">
+                        <a class="page-link" href="index.html?page=2">2</a>
+                    </li>
+                    <li class="page-item">
+                        <a class="page-link" href="index.html?page=3">3</a>
+                    </li>
+                    <li class="page-item disabled">
+                        <span class="page-link">…</span>
+                    </li>
+                    <li class="page-item">
+                        <a class="page-link" href="index.html?page=10">10</a>
+                    </li>
+                </ul>
+            </nav>
+        </main>
+
+        <aside>
+            <h2>Популярные теги</h2>
+            <p>Python · Django · HTML · CSS</p>
+
+            <h2>Лучшие участники</h2>
+            <ul>
+                <li>Елизавета</li>
+                <li>Александр</li>
+                <li>Анна</li>
+            </ul>
+        </aside>
+    </div>
+
+    <footer class="footer">
+        Учебный проект AskBabenkova · 2026
+    </footer>
+</body>
+</html>
