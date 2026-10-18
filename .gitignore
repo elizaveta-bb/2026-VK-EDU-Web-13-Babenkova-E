@@ -1,0 +1,38 @@
+# Виртуальные окружения Python
+venv/
+.venv/
+
+# Кеш Python
+__pycache__/
+*.py[cod]
+
+# Локальные базы данных Django
+*.sqlite3
+*.sqlite3-journal
+
+# Загруженные файлы и собранная статика Django
+/media/
+/static/
+
+# Зависимости и результаты сборки
+node_modules/
+/build/
+/dist/
+
+# Настройки редакторов
+.idea/
+.vscode/
+
+# Служебные файлы ОС
+.DS_Store
+Thumbs.db
+__MACOSX/
+
+# Журналы
+*.log
+
+# Локальные переменные окружения
+.env
+
+# Архив для проверки
+/public.zip

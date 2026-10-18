@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Регистрация — AskBabenkova</title>
+    <link rel="icon" type="image/svg+xml" href="static/img/favicon.svg">
+    <link rel="stylesheet" href="static/css/bootstrap.min.css">
+    <link rel="stylesheet" href="static/css/style.css">
+</head>
+<body>
+    <header class="header">
+        <a href="index.html" class="logo">AskBabenkova</a>
+
+        <form role="search">
+            <input type="search" placeholder="Поиск вопросов" aria-label="Поиск вопросов">
+            <button type="submit">Найти</button>
+        </form>
+
+        <a href="ask.html">Задать вопрос</a>
+
+        <nav aria-label="Аккаунт">
+            <a href="login.html">Войти</a>
+            <a href="signup.html">Регистрация</a>
+        </nav>
+    </header>
+
+    <div class="layout">
+        <main>
+            <h1 class="questions-title">Регистрация</h1>
+            <p class="text-secondary mb-4">
+                Создай аккаунт, чтобы участвовать в обсуждениях.
+            </p>
+        
+            <div class="alert alert-danger" role="alert">
+                Не удалось создать аккаунт. Исправь ошибку в поле email.
+            </div>
+        
+            <form style="max-width: 560px;">
+                <div class="mb-4">
+                    <label for="signup-login" class="form-label">Логин</label>
+                    <input
+                        type="text"
+                        id="signup-login"
+                        class="form-control"
+                        minlength="3"
+                        maxlength="30"
+                        autocomplete="username"
+                        required
+                        aria-describedby="login-hint"
+                    >
+                    <div id="login-hint" class="form-text">
+                        От 3 до 30 символов.
+                    </div>
+                </div>
+        
+                <div class="mb-4">
+                    <label for="signup-email" class="form-label">Email</label>
+                    <input
+                        type="email"
+                        id="signup-email"
+                        class="form-control is-invalid"
+                        value="example"
+                        maxlength="254"
+                        autocomplete="email"
+                        required
+                        aria-invalid="true"
+                        aria-describedby="email-error email-hint"
+                    >
+                    <div id="email-error" class="invalid-feedback">
+                        Введи корректный email, например name@example.com.
+                    </div>
+                    <div id="email-hint" class="form-text">
+                        Этот адрес будет использоваться для входа.
+                    </div>
+                </div>
+        
+                <div class="mb-4">
+                    <label for="signup-name" class="form-label">
+                        Отображаемое имя
+                    </label>
+                    <input
+                        type="text"
+                        id="signup-name"
+                        class="form-control"
+                        maxlength="50"
+                        autocomplete="nickname"
+                        required
+                        aria-describedby="name-hint"
+                    >
+                    <div id="name-hint" class="form-text">
+                        До 50 символов. Это имя увидят другие участники.
+                    </div>
+                </div>
+        
+                <div class="mb-4">
+                    <label for="signup-password" class="form-label">Пароль</label>
+                    <input
+                        type="password"
+                        id="signup-password"
+                        class="form-control"
+                        minlength="8"
+                        maxlength="128"
+                        autocomplete="new-password"
+                        required
+                        aria-describedby="password-hint"
+                    >
+                    <div id="password-hint" class="form-text">
+                        От 8 до 128 символов.
+                    </div>
+                </div>
+        
+                <div class="mb-4">
+                    <label for="signup-password-repeat" class="form-label">
+                        Повтори пароль
+                    </label>
+                    <input
+                        type="password"
+                        id="signup-password-repeat"
+                        class="form-control"
+                        minlength="8"
+                        maxlength="128"
+                        autocomplete="new-password"
+                        required
+                        aria-describedby="repeat-hint"
+                    >
+                    <div id="repeat-hint" class="form-text">
+                        Введи тот же пароль ещё раз.
+                    </div>
+                </div>
+        
+                <div class="mb-4">
+                    <label for="signup-avatar" class="form-label">Аватарка</label>
+                    <input
+                        type="file"
+                        id="signup-avatar"
+                        class="form-control"
+                        accept="image/png,image/jpeg"
+                        aria-describedby="avatar-hint"
+                    >
+                    <div id="avatar-hint" class="form-text">
+                        Необязательно. Выбери изображение PNG или JPEG.
+                    </div>
+                </div>
+        
+                <button type="button" class="btn btn-success">
+                    Зарегистрироваться
+                </button>
+        
+                <p class="mt-4">
+                    Уже есть аккаунт? <a href="login.html">Войти</a>
+                </p>
+            </form>
+        </main>
+
+        <aside>
+            <h2>Популярные теги</h2>
+            <p>Python · Django · HTML · CSS</p>
+
+            <h2>Лучшие участники</h2>
+            <ul>
+                <li>Елизавета</li>
+                <li>Александр</li>
+                <li>Анна</li>
+            </ul>
+        </aside>
+    </div>
+
+    <footer class="footer">
+        Учебный проект AskBabenkova · 2026
+    </footer>
+</body>
+</html>
