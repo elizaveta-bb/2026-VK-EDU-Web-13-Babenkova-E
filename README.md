@@ -1,1 +1,3 @@
-# 2026-VK-EDU-Web-1-13-Babenkova-E
+# 2026-VK-EDU-Web-13-Babenkova-E
+
+Домашнее задание по курсу «Веб-технологии»
