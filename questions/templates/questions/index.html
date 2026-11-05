@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+
+{% block title %}Новые вопросы — AskBabenkova{% endblock %}
+
+{% block content %}
+    <h1 class="questions-title">Новые вопросы</h1>
+
+    <p class="text-secondary mb-4">
+        Задавай вопросы и делись знаниями
+    </p>
+
+    <p>
+        <a href="{% url 'questions:hot' %}">Лучшие вопросы</a>
+    </p>
+
+    {% include "includes/question_list.html" %}
+{% endblock %}

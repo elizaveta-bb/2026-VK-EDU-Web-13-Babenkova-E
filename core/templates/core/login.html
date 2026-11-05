@@ -1,0 +1,67 @@
+{% extends "base.html" %}
+
+{% block title %}Вход — AskBabenkova{% endblock %}
+
+{% block content %}
+    <h1 class="questions-title">Вход</h1>
+
+    <p class="text-secondary mb-4">
+        Войди в аккаунт, чтобы задавать вопросы и отвечать.
+    </p>
+
+    <form action="{% url 'core:login' %}" method="post" style="max-width: 480px;">
+        {% csrf_token %}
+
+        <div class="mb-4">
+            <label for="login-email" class="form-label">
+                Email
+            </label>
+
+            <input
+                type="email"
+                id="login-email"
+                name="email"
+                class="form-control"
+                placeholder="name@example.com"
+                maxlength="254"
+                autocomplete="username"
+                required
+                aria-describedby="email-hint"
+            >
+
+            <div id="email-hint" class="form-text">
+                Укажи email, который использовала при регистрации.
+            </div>
+        </div>
+
+        <div class="mb-4">
+            <label for="login-password" class="form-label">
+                Пароль
+            </label>
+
+            <input
+                type="password"
+                id="login-password"
+                name="password"
+                class="form-control"
+                maxlength="128"
+                autocomplete="current-password"
+                required
+                aria-describedby="password-hint"
+            >
+
+            <div id="password-hint" class="form-text">
+                Пароль чувствителен к регистру букв.
+            </div>
+        </div>
+
+        <button type="submit" class="btn btn-primary">
+            Войти
+        </button>
+
+        <p class="mt-4">
+            Ещё нет аккаунта?
+            <a href="{% url 'core:signup' %}">Зарегистрироваться</a>
+        </p>
+    </form>
+{% endblock %}

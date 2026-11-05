@@ -1,0 +1,84 @@
+{% extends "base.html" %}
+
+{% block title %}Задать вопрос — AskBabenkova{% endblock %}
+
+{% block content %}
+    <h1 class="questions-title">Задать вопрос</h1>
+
+    <p class="text-secondary mb-4">
+        Опиши проблему, чтобы другие участники могли помочь.
+    </p>
+
+    <form action="{% url 'questions:ask' %}" method="post">
+        {% csrf_token %}
+
+        <div class="mb-4">
+            <label for="question-title" class="form-label">
+                Заголовок
+            </label>
+
+            <input
+                type="text"
+                id="question-title"
+                name="title"
+                class="form-control"
+                minlength="10"
+                maxlength="150"
+                required
+                aria-describedby="title-hint"
+                placeholder="Как подключить Bootstrap к странице?"
+            >
+
+            <div id="title-hint" class="form-text">
+                От 10 до 150 символов. Кратко сформулируй свой вопрос.
+            </div>
+        </div>
+
+        <div class="mb-4">
+            <label for="question-text" class="form-label">
+                Текст вопроса
+            </label>
+
+            <textarea
+                id="question-text"
+                name="text"
+                class="form-control"
+                rows="8"
+                minlength="20"
+                maxlength="5000"
+                required
+                aria-describedby="text-hint"
+                placeholder="Что ты пытаешься сделать? Что уже пробовала?"
+            ></textarea>
+
+            <div id="text-hint" class="form-text">
+                От 20 до 5000 символов. Опиши проблему и ожидаемый результат.
+            </div>
+        </div>
+
+        <div class="mb-4">
+            <label for="question-tags" class="form-label">
+                Теги
+            </label>
+
+            <input
+                type="text"
+                id="question-tags"
+                name="tags"
+                class="form-control"
+                maxlength="100"
+                required
+                aria-describedby="tags-hint"
+                placeholder="html, css, bootstrap"
+            >
+
+            <div id="tags-hint" class="form-text">
+                Укажи от 1 до 3 тегов через запятую, до 100 символов всего.
+            </div>
+        </div>
+
+        <button type="submit" class="btn btn-success">
+            Опубликовать вопрос
+        </button>
+    </form>
+{% endblock %}

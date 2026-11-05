@@ -1,0 +1,31 @@
+<article class="question-card{% if answer.is_correct %} border-success{% endif %}">
+    {% include "includes/author_column.html" with item=answer vote_label="Оценка ответа" %}
+
+    <div class="question-content">
+        <h3 class="fs-6">{{ answer.author }}</h3>
+
+        <p>{{ answer.text }}</p>
+
+        <div class="question-meta">
+            <time datetime="{{ answer.created_at|date:'c' }}">
+                {{ answer.created_at|date:"d.m.Y H:i" }}
+            </time>
+        </div>
+
+        <div class="form-check">
+            <input
+                type="checkbox"
+                id="correct-answer-{{ answer.id }}"
+                class="form-check-input"
+                {% if answer.is_correct %}checked{% endif %}
+                disabled
+            >
+            <label
+                for="correct-answer-{{ answer.id }}"
+                class="form-check-label{% if answer.is_correct %} text-success{% endif %}"
+            >
+                Правильный ответ
+            </label>
+        </div>
+    </div>
+</article>

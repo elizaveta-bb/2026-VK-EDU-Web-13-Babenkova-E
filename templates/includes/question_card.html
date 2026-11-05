@@ -1,0 +1,39 @@
+<article class="question-card">
+    {% include "includes/author_column.html" with item=question vote_label="Оценка вопроса" %}
+
+    <div class="question-content">
+        {% if detailed %}
+            <h1 class="fs-4 mb-3">{{ question.title }}</h1>
+        {% else %}
+            <h2>
+                <a href="{% url 'questions:question_detail' question.id %}">
+                    {{ question.title }}
+                </a>
+            </h2>
+        {% endif %}
+
+        <p>{{ question.text }}</p>
+
+        <div class="question-meta">
+            <span>{{ question.author }}</span>
+            <time datetime="{{ question.created_at|date:'c' }}">
+                {{ question.created_at|date:"d.m.Y H:i" }}
+            </time>
+        </div>
+
+        <div class="question-bottom">
+            <a href="{% url 'questions:question_detail' question.id %}#answers">
+                Ответы: {{ question.answers_count }}
+            </a>
+
+            <div class="question-tags">
+                <span>Теги:</span>
+                {% for tag in question.tags %}
+                    <a href="{% url 'questions:tag' tag %}" class="tag">
+                        {{ tag }}
+                    </a>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+</article>
