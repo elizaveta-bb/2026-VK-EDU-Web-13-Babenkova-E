@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+
+{% block title %}Тег {{ tag_name }} — AskBabenkova{% endblock %}
+
+{% block content %}
+    <h1 class="questions-title">
+        Вопросы по тегу «{{ tag_name }}»
+    </h1>
+
+    <p>
+        <a href="{% url 'questions:index' %}">Новые вопросы</a>
+    </p>
+
+    {% include "includes/question_list.html" %}
+{% endblock %}

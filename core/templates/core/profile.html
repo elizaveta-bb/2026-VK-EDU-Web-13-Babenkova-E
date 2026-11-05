@@ -1,0 +1,110 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}Настройки профиля — AskBabenkova{% endblock %}
+
+{% block content %}
+    <h1 class="questions-title">Настройки профиля</h1>
+
+    <p class="text-secondary mb-4">
+        Здесь можно изменить данные и аватарку.
+    </p>
+
+    <form
+        action="{% url 'core:profile' %}"
+        method="post"
+        enctype="multipart/form-data"
+        style="max-width: 560px;"
+    >
+        {% csrf_token %}
+
+        <div class="mb-4">
+            <label for="profile-login" class="form-label">Логин</label>
+            <input
+                type="text"
+                id="profile-login"
+                name="username"
+                class="form-control"
+                value="{{ profile.username }}"
+                minlength="3"
+                maxlength="30"
+                autocomplete="username"
+                required
+                aria-describedby="profile-login-hint"
+            >
+            <div id="profile-login-hint" class="form-text">
+                От 3 до 30 символов.
+            </div>
+        </div>
+
+        <div class="mb-4">
+            <label for="profile-email" class="form-label">Email</label>
+            <input
+                type="email"
+                id="profile-email"
+                name="email"
+                class="form-control"
+                value="{{ profile.email }}"
+                maxlength="254"
+                autocomplete="email"
+                required
+                aria-describedby="profile-email-hint"
+            >
+            <div id="profile-email-hint" class="form-text">
+                Этот адрес используется для входа в аккаунт.
+            </div>
+        </div>
+
+        <div class="mb-4">
+            <label for="profile-name" class="form-label">
+                Отображаемое имя
+            </label>
+            <input
+                type="text"
+                id="profile-name"
+                name="display_name"
+                class="form-control"
+                value="{{ profile.display_name }}"
+                maxlength="50"
+                autocomplete="nickname"
+                required
+                aria-describedby="profile-name-hint"
+            >
+            <div id="profile-name-hint" class="form-text">
+                До 50 символов. Имя видно рядом с вопросами и ответами.
+            </div>
+        </div>
+
+        <div class="mb-4">
+            <label for="profile-avatar" class="form-label">
+                Аватарка
+            </label>
+
+            <img
+                src="{% static 'core/img/avatar.svg' %}"
+                alt="Текущая аватарка"
+                width="96"
+                height="96"
+                class="d-block rounded mb-3"
+            >
+
+            <input
+                type="file"
+                id="profile-avatar"
+                name="avatar"
+                class="form-control"
+                accept="image/png,image/jpeg"
+                aria-describedby="profile-avatar-hint"
+            >
+
+            <div id="profile-avatar-hint" class="form-text">
+                Выбери PNG или JPEG. Оставь поле пустым,
+                чтобы сохранить текущую аватарку.
+            </div>
+        </div>
+
+        <button type="submit" class="btn btn-primary">
+            Сохранить изменения
+        </button>
+    </form>
+{% endblock %}

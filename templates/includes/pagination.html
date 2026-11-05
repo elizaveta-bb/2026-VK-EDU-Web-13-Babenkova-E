@@ -1,0 +1,53 @@
+{% if page_obj.has_other_pages %}
+    <nav aria-label="Страницы" class="my-4">
+        <ul class="pagination flex-wrap gap-1">
+            {% if page_obj.has_previous %}
+                <li class="page-item">
+                    <a class="page-link"
+                       href="{% querystring page=page_obj.previous_page_number %}">
+                        Назад
+                    </a>
+                </li>
+            {% else %}
+                <li class="page-item disabled">
+                    <span class="page-link">Назад</span>
+                </li>
+            {% endif %}
+
+            {% for number in page_obj.paginator.page_range %}
+                {% if number == page_obj.number %}
+                    <li class="page-item active">
+                        <span class="page-link" aria-current="page">
+                            {{ number }}
+                        </span>
+                    </li>
+                {% else %}
+                    <li class="page-item">
+                        <a class="page-link"
+                           href="{% querystring page=number %}">
+                            {{ number }}
+                        </a>
+                    </li>
+                {% endif %}
+            {% endfor %}
+
+            {% if page_obj.has_next %}
+                <li class="page-item">
+                    <a class="page-link"
+                       href="{% querystring page=page_obj.next_page_number %}">
+                        Вперёд
+                    </a>
+                </li>
+            {% else %}
+                <li class="page-item disabled">
+                    <span class="page-link">Вперёд</span>
+                </li>
+            {% endif %}
+        </ul>
+
+        <p class="text-secondary">
+            Страница {{ page_obj.number }}
+            из {{ page_obj.paginator.num_pages }}
+        </p>
+    </nav>
+{% endif %}

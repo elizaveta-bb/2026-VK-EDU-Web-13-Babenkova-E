@@ -1,0 +1,137 @@
+{% extends "base.html" %}
+
+{% block title %}Регистрация — AskBabenkova{% endblock %}
+
+{% block content %}
+    <h1 class="questions-title">Регистрация</h1>
+
+    <p class="text-secondary mb-4">
+        Создай аккаунт, чтобы участвовать в обсуждениях.
+    </p>
+
+    <form
+        action="{% url 'core:signup' %}"
+        method="post"
+        enctype="multipart/form-data"
+        style="max-width: 560px;"
+    >
+        {% csrf_token %}
+
+        <div class="mb-4">
+            <label for="signup-login" class="form-label">Логин</label>
+            <input
+                type="text"
+                id="signup-login"
+                name="username"
+                class="form-control"
+                minlength="3"
+                maxlength="30"
+                autocomplete="username"
+                required
+                aria-describedby="login-hint"
+            >
+            <div id="login-hint" class="form-text">
+                От 3 до 30 символов.
+            </div>
+        </div>
+
+        <div class="mb-4">
+            <label for="signup-email" class="form-label">Email</label>
+            <input
+                type="email"
+                id="signup-email"
+                name="email"
+                class="form-control"
+                placeholder="name@example.com"
+                maxlength="254"
+                autocomplete="email"
+                required
+                aria-describedby="email-hint"
+            >
+            <div id="email-hint" class="form-text">
+                Этот адрес будет использоваться для входа.
+            </div>
+        </div>
+
+        <div class="mb-4">
+            <label for="signup-name" class="form-label">
+                Отображаемое имя
+            </label>
+            <input
+                type="text"
+                id="signup-name"
+                name="display_name"
+                class="form-control"
+                maxlength="50"
+                autocomplete="nickname"
+                required
+                aria-describedby="name-hint"
+            >
+            <div id="name-hint" class="form-text">
+                До 50 символов. Это имя увидят другие участники.
+            </div>
+        </div>
+
+        <div class="mb-4">
+            <label for="signup-password" class="form-label">Пароль</label>
+            <input
+                type="password"
+                id="signup-password"
+                name="password"
+                class="form-control"
+                minlength="8"
+                maxlength="128"
+                autocomplete="new-password"
+                required
+                aria-describedby="password-hint"
+            >
+            <div id="password-hint" class="form-text">
+                От 8 до 128 символов.
+            </div>
+        </div>
+
+        <div class="mb-4">
+            <label for="signup-password-repeat" class="form-label">
+                Повтори пароль
+            </label>
+            <input
+                type="password"
+                id="signup-password-repeat"
+                name="password_repeat"
+                class="form-control"
+                minlength="8"
+                maxlength="128"
+                autocomplete="new-password"
+                required
+                aria-describedby="repeat-hint"
+            >
+            <div id="repeat-hint" class="form-text">
+                Введи тот же пароль ещё раз.
+            </div>
+        </div>
+
+        <div class="mb-4">
+            <label for="signup-avatar" class="form-label">Аватарка</label>
+            <input
+                type="file"
+                id="signup-avatar"
+                name="avatar"
+                class="form-control"
+                accept="image/png,image/jpeg"
+                aria-describedby="avatar-hint"
+            >
+            <div id="avatar-hint" class="form-text">
+                Необязательно. Выбери изображение PNG или JPEG.
+            </div>
+        </div>
+
+        <button type="submit" class="btn btn-success">
+            Зарегистрироваться
+        </button>
+
+        <p class="mt-4">
+            Уже есть аккаунт?
+            <a href="{% url 'core:login' %}">Войти</a>
+        </p>
+    </form>
+{% endblock %}

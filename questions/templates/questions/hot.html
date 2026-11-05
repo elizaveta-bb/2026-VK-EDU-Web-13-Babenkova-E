@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+
+{% block title %}Лучшие вопросы — AskBabenkova{% endblock %}
+
+{% block content %}
+    <h1 class="questions-title">Лучшие вопросы</h1>
+
+    <p class="text-secondary mb-4">
+        Вопросы с самым высоким рейтингом
+    </p>
+
+    <p>
+        <a href="{% url 'questions:index' %}">Новые вопросы</a>
+    </p>
+
+    {% include "includes/question_list.html" %}
+{% endblock %}

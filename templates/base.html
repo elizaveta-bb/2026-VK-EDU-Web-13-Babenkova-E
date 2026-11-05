@@ -1,0 +1,69 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>{% block title %}AskBabenkova — вопросы и ответы{% endblock %}</title>
+
+    <link rel="icon" type="image/svg+xml"
+          href="{% static 'core/img/favicon.svg' %}">
+    <link rel="stylesheet"
+          href="{% static 'core/css/bootstrap.min.css' %}">
+    <link rel="stylesheet"
+          href="{% static 'core/css/style.css' %}">
+</head>
+<body>
+    <header class="header">
+        <a href="{% url 'questions:index' %}" class="logo">
+            AskBabenkova
+        </a>
+
+        <form role="search" method="get"
+              action="{% url 'questions:index' %}">
+            <input type="search"
+                   name="q"
+                   placeholder="Поиск вопросов"
+                   aria-label="Поиск вопросов">
+            <button type="submit">Найти</button>
+        </form>
+
+        <a href="{% url 'questions:ask' %}">Задать вопрос</a>
+
+        <nav aria-label="Аккаунт">
+            <a href="{% url 'core:login' %}">Войти</a>
+            <a href="{% url 'core:signup' %}">Регистрация</a>
+            <a href="{% url 'core:profile' %}">Профиль</a>
+        </nav>
+    </header>
+
+    <div class="layout">
+        <main>
+            {% block content %}
+            {% endblock %}
+        </main>
+
+        <aside>
+            <h2>Популярные теги</h2>
+            <p>
+                <a href="{% url 'questions:tag' 'python' %}">Python</a> ·
+                <a href="{% url 'questions:tag' 'django' %}">Django</a> ·
+                <a href="{% url 'questions:tag' 'html' %}">HTML</a> ·
+                <a href="{% url 'questions:tag' 'css' %}">CSS</a>
+            </p>
+
+            <h2>Лучшие участники</h2>
+            <ul>
+                <li>Елизавета</li>
+                <li>Александр</li>
+                <li>Анна</li>
+            </ul>
+        </aside>
+    </div>
+
+    <footer class="footer">
+        Учебный проект AskBabenkova · 2026
+    </footer>
+</body>
+</html>
