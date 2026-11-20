@@ -18,10 +18,10 @@
             Всего ответов: {{ question.answers_count }}
         </p>
 
-        {% for answer in answers %}
+        {% for answer in page_obj %}
             {% include "includes/answer_card.html" with answer=answer %}
         {% empty %}
-            <p>Ответов пока нет.</p>
+            <p>Пока нет ни одного ответа к этому вопросу.</p>
         {% endfor %}
 
         {% include "includes/pagination.html" %}

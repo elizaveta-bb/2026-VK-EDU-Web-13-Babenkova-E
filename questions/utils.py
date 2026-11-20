@@ -12,4 +12,5 @@ def paginate(objects_list, request, per_page=10):
     except EmptyPage:
         page = paginator.page(1)
 
+    page.navigation = paginator.get_elided_page_range(page.number)
     return page
