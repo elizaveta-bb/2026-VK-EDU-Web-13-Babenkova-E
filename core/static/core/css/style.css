@@ -39,13 +39,13 @@ a:hover {
     text-decoration: none;
 }
 
-.header form {
+.header > form {
     display: flex;
     flex: 1 1 240px;
     gap: 8px;
 }
 
-.header input {
+.header input[type="search"] {
     width: 100%;
     min-width: 0;
     padding: 10px;
@@ -80,6 +80,47 @@ a:hover {
     display: flex;
     flex-wrap: wrap;
     gap: 12px;
+}
+
+.account-nav {
+    align-items: center;
+}
+
+.account-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.account-link .account-avatar {
+    width: 36px;
+    height: 36px;
+}
+
+/* Формы */
+
+.django-form input:not([type="checkbox"], [type="hidden"]),
+.django-form textarea {
+    display: block;
+    width: 100%;
+    padding: 8px 12px;
+    border: 1px solid #bfc8d6;
+    border-radius: 6px;
+}
+
+.django-form .errorlist {
+    margin: 4px 0 0;
+    padding-left: 20px;
+}
+
+.django-form [aria-invalid="true"] {
+    border-color: #dc3545;
+}
+
+.question-card:target {
+    scroll-margin-top: 16px;
+    outline: 2px solid #2459b8;
+    outline-offset: 2px;
 }
 
 /* Основная и правая колонки */
@@ -257,7 +298,7 @@ aside h2:not(:first-child) {
         gap: 14px;
     }
 
-    .header form {
+    .header > form {
         flex-basis: 100%;
         order: 1;
     }
