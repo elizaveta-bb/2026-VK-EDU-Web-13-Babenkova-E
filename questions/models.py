@@ -4,6 +4,8 @@ from django.db.models.functions import Coalesce
 from django.urls import reverse
 from django.utils import timezone
 
+from .utils import PAGE_SIZE
+
 
 class TagQuerySet(models.QuerySet):
     def popular(self, limit=8):
@@ -33,6 +35,13 @@ class Tag(models.Model):
         return reverse("questions:tag", args=[self.slug])
 
 
+def with_user_vote(queryset, votes, user):
+    if user is None or not user.is_authenticated:
+        return queryset
+    vote = votes.filter(user=user).order_by().values("value")
+    return queryset.annotate(my_vote=models.Subquery(vote[:1]))
+
+
 class QuestionManager(models.Manager):
     def _with_ratings(self):
         ratings = (
@@ -44,7 +53,7 @@ class QuestionManager(models.Manager):
         )
         return self.annotate(rating=Coalesce(models.Subquery(ratings), 0))
 
-    def for_display(self):
+    def for_display(self, user=None):
         # Отдельные подзапросы не перемножают строки ответов и оценок.
         answer_counts = (
             Answer.objects.filter(question_id=models.OuterRef("pk"))
@@ -53,12 +62,14 @@ class QuestionManager(models.Manager):
             .annotate(total=models.Count("pk"))
             .values("total")
         )
-        return (
+        questions = (
             self._with_ratings()
             .select_related("author__profile")
             .prefetch_related("tags")
             .annotate(answers_count=Coalesce(models.Subquery(answer_counts), 0))
         )
+        votes = QuestionLike.objects.filter(question_id=models.OuterRef("pk"))
+        return with_user_vote(questions, votes, user)
 
     def newest(self):
         return self.order_by("-created_at", "-pk")
@@ -69,10 +80,10 @@ class QuestionManager(models.Manager):
     def by_tag(self, tag):
         return self.newest().filter(tags=tag)
 
-    def cards_for_page(self, questions):
+    def cards_for_page(self, questions, user=None):
         # Загружаем связи и счётчики только для вопросов на выбранной странице.
         ids = list(questions.values_list("pk", flat=True))
-        cards = self.for_display().in_bulk(ids)
+        cards = self.for_display(user).in_bulk(ids)
         return [cards[pk] for pk in ids if pk in cards]
 
 
@@ -103,7 +114,7 @@ class Question(models.Model):
 
 
 class AnswerManager(models.Manager):
-    def for_question(self, question):
+    def for_question(self, question, user=None):
         ratings = (
             AnswerLike.objects.filter(answer_id=models.OuterRef("pk"))
             .order_by()
@@ -111,12 +122,23 @@ class AnswerManager(models.Manager):
             .annotate(total=models.Sum("value"))
             .values("total")
         )
-        return (
+        answers = (
             self.filter(question=question)
             .select_related("author__profile")
             .annotate(rating=Coalesce(models.Subquery(ratings), 0))
             .order_by("-is_correct", "created_at", "pk")
         )
+        votes = AnswerLike.objects.filter(answer_id=models.OuterRef("pk"))
+        return with_user_vote(answers, votes, user)
+
+    def page_for(self, answer):
+        # Повторяем порядок for_question: правильные, затем дата и id.
+        before = (
+            models.Q(is_correct__gt=answer.is_correct)
+            | models.Q(is_correct=answer.is_correct, created_at__lt=answer.created_at)
+            | models.Q(is_correct=answer.is_correct, created_at=answer.created_at, pk__lt=answer.pk)
+        )
+        return self.filter(before, question_id=answer.question_id).count() // PAGE_SIZE + 1
 
 
 class Answer(models.Model):

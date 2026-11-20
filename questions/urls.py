@@ -14,4 +14,7 @@ urlpatterns = [
         name="question_detail",
     ),
     path("ask/", views.ask, name="ask"),
+    path("ajax/question/vote/", views.vote_question, name="vote_question"),
+    path("ajax/answer/vote/", views.vote_answer, name="vote_answer"),
+    path("ajax/answer/correct/", views.correct_answer, name="correct_answer"),
 ]
