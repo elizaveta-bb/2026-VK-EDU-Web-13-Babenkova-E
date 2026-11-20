@@ -179,3 +179,51 @@ docker compose down
 Формы отображаются без сохранения данных.
 Авторизация, загрузка файлов, поиск и голосование
 на сервере пока не реализованы.
+
+## ДЗ3 — Django и PostgreSQL
+
+Вопросы, ответы, теги и оценки хранятся в PostgreSQL. Сайт показывает
+новые и лучшие вопросы, вопросы по тегу и ответы с пагинацией.
+Управление данными доступно в `/admin/`.
+
+### Запуск через Docker Compose
+
+Из корня проекта скопируйте настройки:
+
+```bash
+cp -n .env.example .env.docker
+```
+
+В `.env.docker` задайте `DJANGO_SECRET_KEY` и `POSTGRES_PASSWORD`
+и установите `POSTGRES_HOST=db`. Затем выполните:
+
+```bash
+docker compose --env-file .env.docker up --build -d
+docker compose --env-file .env.docker exec web python manage.py createsuperuser
+docker compose --env-file .env.docker exec web python manage.py fill_db 10
+```
+
+Сайт доступен по адресу http://127.0.0.1:8000/,
+админка — по адресу http://127.0.0.1:8000/admin/.
+Миграции применяются автоматически. Данные PostgreSQL хранятся
+в томе `postgres_data`.
+
+### Запуск Django напрямую
+
+Для локального запуска нужны Python 3.13 и PostgreSQL. Скопируйте
+`.env.example` в `.env.local`, заполните секретный ключ и укажите
+параметры локальной базы. Для PostgreSQL на этом компьютере используйте
+`POSTGRES_HOST=127.0.0.1`.
+
+```bash
+python3.13 -m venv .venv
+source .venv/bin/activate
+python -m pip install -r requirements.txt
+python manage.py migrate
+python manage.py runserver
+```
+
+### Заполнение базы
+
+`fill_db 10` добавляет 100 вопросов, 1 000 ответов и 2 000 оценок.
+Для проверки полного объёма используйте `fill_db 10000`.

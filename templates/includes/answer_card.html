@@ -1,8 +1,9 @@
+{% firstof answer.author.profile.display_name answer.author.get_full_name answer.author.get_username as author_name %}
 <article class="question-card{% if answer.is_correct %} border-success{% endif %}">
     {% include "includes/author_column.html" with item=answer vote_label="Оценка ответа" %}
 
     <div class="question-content">
-        <h3 class="fs-6">{{ answer.author }}</h3>
+        <h3 class="fs-6">{{ author_name }}</h3>
 
         <p>{{ answer.text }}</p>
 

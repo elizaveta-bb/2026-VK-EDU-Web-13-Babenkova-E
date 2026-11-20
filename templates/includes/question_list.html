@@ -1,7 +1,7 @@
-{% for question in questions %}
+{% for question in page_obj %}
     {% include "includes/question_card.html" with question=question %}
 {% empty %}
-    <p>Вопросов пока нет.</p>
+    <p>Пока нет ни одного вопроса.</p>
 {% endfor %}
 
 {% include "includes/pagination.html" %}

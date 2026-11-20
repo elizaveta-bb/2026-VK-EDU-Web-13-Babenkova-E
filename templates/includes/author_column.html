@@ -2,8 +2,8 @@
 
 <div class="question-author">
     <img
-        src="{% static 'core/img/avatar.svg' %}"
-        alt="Аватар {{ item.author }}"
+        src="{% if item.author.profile.avatar %}{{ item.author.profile.avatar.url }}{% else %}{% static 'core/img/avatar.svg' %}{% endif %}"
+        alt="Аватар {{ author_name }}"
         class="avatar"
         width="64"
         height="64"
@@ -12,18 +12,18 @@
     <div class="vote-widget" role="group" aria-label="{{ vote_label }}">
         <button
             type="button"
-            class="vote-button{% if item.user_vote == 1 %} is-liked{% endif %}"
+            class="vote-button"
             aria-label="Нравится"
-            aria-pressed="{% if item.user_vote == 1 %}true{% else %}false{% endif %}"
+            disabled
         >▲</button>
 
         <span class="vote-count">{{ item.rating }}</span>
 
         <button
             type="button"
-            class="vote-button{% if item.user_vote == -1 %} is-disliked{% endif %}"
+            class="vote-button"
             aria-label="Не нравится"
-            aria-pressed="{% if item.user_vote == -1 %}true{% else %}false{% endif %}"
+            disabled
         >▼</button>
     </div>
 </div>

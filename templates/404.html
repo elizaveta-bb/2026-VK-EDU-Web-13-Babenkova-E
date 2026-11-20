@@ -1,0 +1,9 @@
+{% extends "base.html" %}
+
+{% block title %}Страница не найдена — AskBabenkova{% endblock %}
+
+{% block content %}
+    <h1 class="questions-title">Страница не найдена</h1>
+    <p>Проверь адрес или вернись к списку вопросов.</p>
+    <p><a href="{% url 'questions:index' %}">Новые вопросы</a></p>
+{% endblock %}
