@@ -9,21 +9,21 @@
         height="64"
     >
 
-    <div class="vote-widget" role="group" aria-label="{{ vote_label }}"
-         data-vote-url="{{ vote_url }}" data-target-id="{{ item.pk }}"
-         {% if not user.is_authenticated %}title="Войдите, чтобы голосовать"{% endif %}>
-        <button type="button" data-value="1"
-                class="vote-button{% if item.my_vote == 1 %} is-liked{% endif %}"
-                aria-label="Нравится" aria-pressed="{% if item.my_vote == 1 %}true{% else %}false{% endif %}"
-                {% if not user.is_authenticated %}disabled title="Войдите, чтобы поставить лайк"{% elif item.my_vote == 1 %}disabled{% endif %}
+    <div class="vote-widget" role="group" aria-label="{{ vote_label }}">
+        <button
+            type="button"
+            class="vote-button"
+            aria-label="Нравится"
+            disabled
         >▲</button>
 
-        <span class="vote-count" aria-live="polite">{{ item.rating }}</span>
+        <span class="vote-count">{{ item.rating }}</span>
 
-        <button type="button" data-value="-1"
-                class="vote-button{% if item.my_vote == -1 %} is-disliked{% endif %}"
-                aria-label="Не нравится" aria-pressed="{% if item.my_vote == -1 %}true{% else %}false{% endif %}"
-                {% if not user.is_authenticated %}disabled title="Войдите, чтобы поставить дизлайк"{% elif item.my_vote == -1 %}disabled{% endif %}
+        <button
+            type="button"
+            class="vote-button"
+            aria-label="Не нравится"
+            disabled
         >▼</button>
     </div>
 </div>

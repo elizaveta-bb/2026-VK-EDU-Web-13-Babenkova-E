@@ -1,7 +1,6 @@
 {% firstof question.author.profile.display_name question.author.get_full_name question.author.get_username as author_name %}
-{% url 'questions:vote_question' as vote_url %}
 <article class="question-card">
-    {% include "includes/author_column.html" with item=question vote_label="Оценка вопроса" vote_url=vote_url %}
+    {% include "includes/author_column.html" with item=question vote_label="Оценка вопроса" %}
 
     <div class="question-content">
         {% if detailed %}

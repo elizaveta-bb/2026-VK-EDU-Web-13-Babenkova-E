@@ -1,7 +1,6 @@
 {% firstof answer.author.profile.display_name answer.author.get_full_name answer.author.get_username as author_name %}
-{% url 'questions:vote_answer' as vote_url %}
-<article id="answer-{{ answer.pk }}" class="question-card{% if answer.is_correct %} border-success{% endif %}">
-    {% include "includes/author_column.html" with item=answer vote_label="Оценка ответа" vote_url=vote_url %}
+<article class="question-card{% if answer.is_correct %} border-success{% endif %}">
+    {% include "includes/author_column.html" with item=answer vote_label="Оценка ответа" %}
 
     <div class="question-content">
         <h3 class="fs-6">{{ author_name }}</h3>
@@ -14,18 +13,20 @@
             </time>
         </div>
 
-        {% if user.is_authenticated and user.pk == question.author_id %}
-            <div class="form-check">
-                <input type="checkbox" id="correct-answer-{{ answer.pk }}" class="form-check-input"
-                       data-correct-url="{% url 'questions:correct_answer' %}"
-                       data-question-id="{{ question.pk }}" data-answer-id="{{ answer.pk }}"
-                       {% if answer.is_correct %}checked{% endif %}>
-                <label for="correct-answer-{{ answer.pk }}" class="form-check-label{% if answer.is_correct %} text-success{% endif %}">
-                    Правильный ответ
-                </label>
-            </div>
-        {% elif answer.is_correct %}
-            <p class="text-success mb-0">Правильный ответ</p>
-        {% endif %}
+        <div class="form-check">
+            <input
+                type="checkbox"
+                id="correct-answer-{{ answer.id }}"
+                class="form-check-input"
+                {% if answer.is_correct %}checked{% endif %}
+                disabled
+            >
+            <label
+                for="correct-answer-{{ answer.id }}"
+                class="form-check-label{% if answer.is_correct %} text-success{% endif %}"
+            >
+                Правильный ответ
+            </label>
+        </div>
     </div>
 </article>
